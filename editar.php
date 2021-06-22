@@ -37,8 +37,8 @@
 
 			<?php
 			include "config.php";
-			$con = new PDO("mysql:host=localhost;dbname=pet", "root", "");
-			$consulta = $con->prepare("SELECT * FROM pets WHERE ID_CADASTRO = {$_GET['ID_CADASTRO']} limit 1");
+			$con = new PDO("mysql:host=localhost;dbname=petshop", "root", "");
+			$consulta = $con->prepare("SELECT * FROM cadastro_pet WHERE ID_CADASTRO = {$_GET['ID_CADASTRO']} limit 1");
 			$consulta->execute();
 			$linha = $consulta->fetchAll(PDO::FETCH_OBJ);
 

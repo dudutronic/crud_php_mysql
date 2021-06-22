@@ -11,6 +11,9 @@ include 'index.php';
     <title>Pet Shop</title>
     <meta charset="utf-8">
     <link href="style.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
 </head>
 
@@ -19,7 +22,8 @@ include 'index.php';
     <div id="div2">
         <div class="text-Center">
             <div>
-                <h3>Adicionar Novo Pet</h3>
+                <h2>Adicionar Novo Pet</h2>
+                
             </div>
         </div>
         <form method="post" action="inserirPet.php">
@@ -45,7 +49,9 @@ include 'index.php';
                     <input type="text" class="form-control" name="nomeresp" placeholder="Nome do Responsável">
                 </div>
                 </br>
-                <div><button type="submit" class="btn btn-primary" name="acao">Inserir</button></div>
+                <div><button type="submit" class="btn btn-primary" name="acao">Inserir</button>
+                 </div><br>
+                <div><a href="listarPetNovo.php" class="btn btn-success btn-xs pull-center"><b></b> Consultar cadastro de Pets</a></div>
             </div>
         </form>
     </div>
