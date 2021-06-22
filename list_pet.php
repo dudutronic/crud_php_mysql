@@ -58,7 +58,7 @@
                             <td><?= $listar->responsable; ?></td>
                             <td><?= $listar->age; ?></td>
                             <td><?= $listar->type; ?></td>
-                            <td class="text-center"><a class='btn btn-info btn-xs' href="edit.php?ID_CADASTRO=<?= $listar->id; ?>"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                            <td class="text-center"><a class='btn btn-info btn-xs' href="editar.php"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                                 <a href="deletePet.php?ID_CADASTRO=<?= $listar->id; ?>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a>
                             </td>
                         </tr>

@@ -1,0 +1,23 @@
+td {
+    border: 3px solid #ffffff;
+    color: #5d5d5d;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    background-color: #efeeee;
+    text-align: center;
+    table-layout: fixed;
+    max-width: 200px;
+}
+
+form{
+    max-width: 200px;
+    text-align:  center;
+    display: inline-block;
+    position: relative;
+}
+
+label{
+    text-align:  left;
+}
+

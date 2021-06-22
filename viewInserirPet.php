@@ -25,7 +25,7 @@ include 'index.php';
         <form method="post" action="inserirPet.php">
             <div>
                 <div>
-                    <input type="text" class="form-control" name="nome" value="<?php echo $nome_colab ?>" >
+                    <input type="text" class="form-control" name="nome" placeholder="Nome do Pet">
                 </div>
                 </br>
                 <div>
@@ -45,7 +45,7 @@ include 'index.php';
                     <input type="text" class="form-control" name="nomeresp" placeholder="Nome do Responsável">
                 </div>
                 </br>
-                <div><button type="submit" class="btn btn-primary" name="acao">Atualizar</button></div>
+                <div><button type="submit" class="btn btn-primary" name="acao">Inserir</button></div>
             </div>
         </form>
     </div>

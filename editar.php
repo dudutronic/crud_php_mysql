@@ -2,73 +2,91 @@
 <html lang="pt-br">
 
 <head>
-    <title>Editar Informações do Pet</title>
-    <meta charset="utf-8">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
+	<style type="text/css">
+		body {
+			background-color: blue;
+		}
+
+		input {
+			border-color: #cccccc;
+			outline: 0;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+
+
+		}
+
+	</style>
+
+	<title>Editar Informações do Pet</title>
+	<meta charset="utf-8">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+
 </head>
 
 <body>
-    <div class="row">
-        <div class="text-center"><img src="img/edit_info_pet.jpg" width="600" height="192">
+	<div class="row">
+		<div class="text-center"><img src="img/logo2.jpeg" width="300" height="192">
 
-            <br></br></br>
-            <h2>Editar informações do Pet</h2></br>
-        </div>
-        <div class="row col-md-8 col-md-offset-2 custyle">
+			<br></br></br>
+			<h2>Editar informações do Pet</h2></br>
+		</div>
+		<div class="row col-md-8 col-md-offset-2 custyle">
 
-            <?php
-            include "config.php";
-            $con = new PDO("mysql:host=localhost;dbname=pet", "root", "");
-            $consulta = $con->prepare("SELECT * FROM pets");
-            $consulta->execute();
-            $linha = $consulta->fetchAll(PDO::FETCH_OBJ);
+			<?php
+			include "config.php";
+			$con = new PDO("mysql:host=localhost;dbname=pet", "root", "");
+			$consulta = $con->prepare("SELECT * FROM pets");
+			$consulta->execute();
+			$linha = $consulta->fetchAll(PDO::FETCH_OBJ);
 
-            if (count($linha) > 0) {
+			if (count($linha) > 0) {
 
-            ?>
-                <table class="table table-striped custab">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome do Pet</th>
-                            <th>Raça</th>
-                            <th>Responsável</th>
-                            <th>Idade</th>
-                            <th>Tipo Pet</th>
-                        </tr>
-                    </thead>
+			?>
+				<table class="table table-striped custab">
+					<thead>
+						<a href="viewInserirPet.php" class="btn btn-primary btn-xs pull-right"><b>+</b> Adicionar novo Pet</a>
+						<tr>
+							<th>ID</th>
+							<th>Nome do Pet</th>
+							<th>Raça</th>
+							<th>Responsável</th>
+							<th>Idade</th>
+							<th>Tipo Pet</th>
+							<th class="text-center">Ação</th>
+						</tr>
+					</thead>
 
-                    <?php
-                    foreach ($linha as $listar) {
-                    ?>
+					<?php
+					foreach ($linha as $listar) {
+					?>
 
-                        <tr>
-                            <td><?= $listar->id; ?></td>
-                            <td><input type="text" name="nome_colab" value="<?php echo $listar->name ?>" /></td>
-                            <td><input type="text" name="nome_colab" value="<?php echo $listar->breed ?>" /></td>
-                            <td><input type="text" name="nome_colab" value="<?php echo $listar->responsable ?>" /></td>
-                            <td><input type="text" name="nome_colab" value="<?php echo $listar->age ?>" /></td>
-                            <td><input type="text" name="nome_colab" value="<?php echo $listar->type ?>" /></td>
-                            </td>
-                        </tr>
+						<tr>
+							<td><?= $listar->id; ?></td>
+							<td><input type="text" name="nome" border: x value="<?php echo $listar->name ?>" /></td>
+							<td><input type="text" name="raca" value="<?php echo $listar->breed ?>" /></td>
+							<td><input type="text" name="responsavel" value="<?php echo $listar->responsable ?>" /></td>
+							<td><input type="text" name="idade" style="width: 60px;" value="<?php echo $listar->age ?>" /></td>
+							<td><input type="text" name="tipo" value="<?php echo $listar->type ?>" /></td>
+							<td class="text-center"><a class='btn btn-info btn-xs' style="width: 80px;" href="editar.php"><span class="glyphicon glyphicon-edit"></span> Confirmar</a>
+								<a href="deletePet.php?ID_CADASTRO=<?= $listar->id; ?>" class="btn btn-danger btn-xs" style="width: 80px;"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
+							</td>
+						</tr>
 
-                    <?php
+					<?php
 
-                    } //Fechamento do foreach
-                    ?>
-                </table>
-                <form method="post" action="inserirPet.php">
-                    <div><button type="submit" class="btn btn-primary" name="acao">Atualizar</button></div>
-                </form>
-            <?php
-            } // fechamento IF            
-            ?>
+					} //Fechamento do foreach
+					?>
+				</table>
+			<?php
+			} // fechamento IF            
+			?>
 
-        </div>
-    </div>
+		</div>
+	</div>
 </body>
 
 </html>
