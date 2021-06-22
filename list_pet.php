@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php header("Content-type: text/html; charset=utf-8"); ?>
 
 <head>
     <title>Pet Shop</title>
@@ -52,14 +53,14 @@
 
 
                         <tr>
-                            <td><?= $listar->id; ?></td>
-                            <td><?= $listar->name; ?></td>
-                            <td><?= $listar->breed; ?>e</td>
-                            <td><?= $listar->responsable; ?></td>
-                            <td><?= $listar->age; ?></td>
-                            <td><?= $listar->type; ?></td>
-                            <td class="text-center"><a class='btn btn-info btn-xs' href="editar.php"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                                <a href="deletePet.php?ID_CADASTRO=<?= $listar->id; ?>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a>
+                            <td><?= $listar->ID_CADASTRO; ?></td>
+                            <td><?= $listar->NOME_PET; ?></td>
+                            <td><?= $listar->RACA_PET; ?>e</td>
+                            <td><?= $listar->NOME_RESP; ?></td>
+                            <td><?= $listar->IDADE_PET; ?></td>
+                            <td><?= $listar->TIPO_PET; ?></td>
+                            <td class="text-center"><a class='btn btn-info btn-xs' href="editar.php?ID_CADASTRO=<?= $listar->ID_CADASTRO; ?>"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="deletePet.php?ID_CADASTRO=<?= $listar->ID_CADASTRO; ?>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a>
                             </td>
                         </tr>
                     <?php

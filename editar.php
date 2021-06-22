@@ -15,7 +15,6 @@
 
 
 		}
-
 	</style>
 
 	<title>Editar Informações do Pet</title>
@@ -39,7 +38,7 @@
 			<?php
 			include "config.php";
 			$con = new PDO("mysql:host=localhost;dbname=pet", "root", "");
-			$consulta = $con->prepare("SELECT * FROM pets");
+			$consulta = $con->prepare("SELECT * FROM pets WHERE ID_CADASTRO = {$_GET['ID_CADASTRO']} limit 1");
 			$consulta->execute();
 			$linha = $consulta->fetchAll(PDO::FETCH_OBJ);
 
@@ -59,27 +58,30 @@
 							<th class="text-center">Ação</th>
 						</tr>
 					</thead>
+					<form action="update.php" method="POST">
+						<?php
+						foreach ($linha as $listar) {
+						?>
 
-					<?php
-					foreach ($linha as $listar) {
-					?>
+							<tr>
+								<td><?= $listar->ID_CADASTRO; ?></td>
+								<td><input type="text" name="nome" border: x value="<?php echo $listar->NOME_PET ?>" /></td>
+								<td><input type="text" name="raca" value="<?php echo $listar->RACA_PET ?>" /></td>
+								<td><input type="text" name="responsavel" value="<?php echo $listar->NOME_RESP ?>" /></td>
+								<td><input type="text" name="idade" style="width: 60px;" value="<?php echo $listar->IDADE_PET ?>" /></td>
+								<td><input type="text" name="tipo" value="<?php echo $listar->TIPO_PET ?>" /></td>
+								<input type="hidden" name="id_pet" value="<?php echo $_GET['ID_CADASTRO'] ?>" />
+								<td class="text-center">
+									<input type="submit" class='btn btn-info btn-xs' style="width: 80px;" value="Salvar">
+									<a href="javascript:history.back(1)" class="btn btn-danger btn-xs" style="width: 80px;">Cancelar</a>
+								</td>
+							</tr>
 
-						<tr>
-							<td><?= $listar->id; ?></td>
-							<td><input type="text" name="nome" border: x value="<?php echo $listar->name ?>" /></td>
-							<td><input type="text" name="raca" value="<?php echo $listar->breed ?>" /></td>
-							<td><input type="text" name="responsavel" value="<?php echo $listar->responsable ?>" /></td>
-							<td><input type="text" name="idade" style="width: 60px;" value="<?php echo $listar->age ?>" /></td>
-							<td><input type="text" name="tipo" value="<?php echo $listar->type ?>" /></td>
-							<td class="text-center"><a class='btn btn-info btn-xs' style="width: 80px;" href="editar.php"><span class="glyphicon glyphicon-edit"></span> Confirmar</a>
-								<a href="deletePet.php?ID_CADASTRO=<?= $listar->id; ?>" class="btn btn-danger btn-xs" style="width: 80px;"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
-							</td>
-						</tr>
+						<?php
 
-					<?php
-
-					} //Fechamento do foreach
-					?>
+						} //Fechamento do foreach
+						?>
+					</form>
 				</table>
 			<?php
 			} // fechamento IF            
